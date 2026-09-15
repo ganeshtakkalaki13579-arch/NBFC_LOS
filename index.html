@@ -152,6 +152,18 @@ a{color:var(--abc-red);text-decoration:none}
 .nav a.active{background:var(--sunrise);color:#fff;box-shadow:0 6px 16px rgba(226,67,31,.4)}
 .nav a .badge{margin-left:auto;background:rgba(255,255,255,.18);border-radius:20px;padding:1px 8px;font-size:11px;font-weight:700;font-family:var(--mono)}
 .nav a.active .badge{background:rgba(255,255,255,.25)}
+.side-sample{margin:6px 2px 4px;padding:12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09)}
+.side-sample .ss-t{font-size:13px;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px}
+.side-sample .ss-s{font-size:11.5px;color:rgba(255,255,255,.55);margin:4px 0 10px;line-height:1.4}
+.side-sample .ss-row{display:flex;gap:6px}
+.side-sample select{flex:0 0 76px;padding:8px 6px;border-radius:8px;border:1px solid rgba(255,255,255,.18);background:rgba(0,0,0,.18);color:#fff;font-size:12.5px;font-family:inherit}
+.side-sample select option{color:#241015}
+.side-sample .ss-go{flex:1;padding:8px 10px;border-radius:8px;background:var(--sunrise);color:#fff;font-weight:700;font-size:12.5px;box-shadow:0 4px 12px rgba(226,67,31,.35);transition:.15s}
+.side-sample .ss-go:hover{filter:brightness(1.06)}
+.side-sample .ss-go:focus-visible,.side-sample select:focus-visible,.side-sample .ss-clear:focus-visible{outline:2px solid #fff;outline-offset:2px}
+.side-sample .ss-foot{display:flex;align-items:center;justify-content:space-between;margin-top:9px;font-size:11.5px;color:rgba(255,255,255,.55)}
+.side-sample .ss-clear{color:rgba(255,255,255,.7);font-size:11.5px;font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.side-sample .ss-clear:hover{color:#fff}
 .side-foot{padding:14px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:rgba(255,255,255,.45)}
 
 .topbar{
@@ -575,9 +587,8 @@ table.tbl tr{cursor:pointer}
 </head>
 <body>
 
-<!-- ================= AUTH SCREEN ================= -->
-<!-- ================= PUBLIC WEBSITE (LANDING) ================= -->
-<div id="siteScreen" class="show">
+<!-- ================= PUBLIC WEBSITE (LANDING) — reachable from the user menu ================= -->
+<div id="siteScreen">
   <nav class="site-nav">
     <div class="site-nav-in">
       <div class="brand">
@@ -588,8 +599,8 @@ table.tbl tr{cursor:pointer}
         <a class="navlink" onclick="SITE.scrollTo('features')">Features</a>
         <a class="navlink" onclick="SITE.scrollTo('process')">Process</a>
         <a class="navlink" onclick="SITE.scrollTo('about')">About</a>
-        <a onclick="SITE.enter('login')">Log In</a>
-        <button class="btn primary" onclick="SITE.enter('signup')">Get Started</button>
+        <a onclick="SITE.enter('dashboard')">Open Dashboard</a>
+        <button class="btn primary" onclick="SITE.enter('newcase')">Get Started</button>
       </div>
     </div>
   </nav>
@@ -602,8 +613,8 @@ table.tbl tr{cursor:pointer}
         <h1>The complete <span class="grad">loan origination</span> workflow, end to end.</h1>
         <p class="lead">From sourcing to disbursement and post‑disbursement — manage every loan case through 11 guided stages, track turn‑around‑time automatically, and keep every stakeholder in sync.</p>
         <div class="hero-cta">
-          <button class="btn primary btn-xl" onclick="SITE.enter('signup')">Get Started</button>
-          <button class="btn ghost btn-xl" onclick="SITE.enter('login')">Log In</button>
+          <button class="btn primary btn-xl" onclick="SITE.enter('newcase')">Get Started</button>
+          <button class="btn ghost btn-xl" onclick="SITE.enter('dashboard')">Open Dashboard</button>
         </div>
         <div class="hero-trust">
           <div class="t"><div class="n">11</div><div class="l">Guided stages</div></div>
@@ -673,8 +684,8 @@ table.tbl tr{cursor:pointer}
   <div class="cta-band">
     <div class="cta-inner">
       <h2>Ready to move your first case?</h2>
-      <p>Create an account in seconds and start building your lending pipeline today.</p>
-      <button class="btn-white" onclick="SITE.enter('signup')">Get Started</button>
+      <p>Open the workspace and start building your lending pipeline today.</p>
+      <button class="btn-white" onclick="SITE.enter('newcase')">Get Started</button>
     </div>
   </div>
 
@@ -685,95 +696,12 @@ table.tbl tr{cursor:pointer}
         <div class="chip"><img id="siteLogoFoot" alt="Aditya Birla Capital"/></div>
         <p style="margin-top:13px;font-size:13px;line-height:1.6">End‑to‑end Loan Origination System for NBFC lending — sourcing to disbursement, with TAT tracking and shared reporting.</p>
       </div>
-      <div class="fcol"><h5>Platform</h5><a onclick="SITE.scrollTo('features')">Features</a><a onclick="SITE.scrollTo('process')">The 11 stages</a><a onclick="SITE.enter('login')">Log in</a><a onclick="SITE.enter('signup')">Get started</a></div>
+      <div class="fcol"><h5>Platform</h5><a onclick="SITE.scrollTo('features')">Features</a><a onclick="SITE.scrollTo('process')">The 11 stages</a><a onclick="SITE.enter('dashboard')">Open dashboard</a><a onclick="SITE.enter('newcase')">Get started</a></div>
       <div class="fcol"><h5>Workflow</h5><a onclick="SITE.scrollTo('process')">Sourcing &amp; Case Login</a><a onclick="SITE.scrollTo('process')">Credit Committee</a><a onclick="SITE.scrollTo('process')">Sanction &amp; Disbursement</a><a onclick="SITE.scrollTo('process')">PDD &amp; NACH/ESCROW</a></div>
-      <div class="fcol"><h5>Get started</h5><a onclick="SITE.enter('signup')">Create an account</a><a onclick="SITE.enter('login')">Sign in</a><a onclick="SITE.enter('reset')">Reset password</a></div>
+      <div class="fcol"><h5>Get started</h5><a onclick="SITE.enter('newcase')">Start a new case</a><a onclick="SITE.enter('data')">Generate sample data</a><a onclick="SITE.enter('help')">Process guide</a></div>
     </div>
     <div class="copy">© 2026 Aditya Birla Capital · Loan Origination System — internal prototype build. LOS = Loan Origination System · NBFC = Non‑Banking Financial Company.</div>
   </footer>
-</div>
-
-<!-- ================= AUTH SCREEN ================= -->
-<div id="authScreen" style="display:none">
-  <div class="auth-clean">
-    <div class="auth-clean-card">
-      <div class="auth-logo-wrap"><img id="brandLogo1" alt="Aditya Birla Capital"/></div>
-      <div class="auth-tabs">
-        <button id="tabLogin" class="active" onclick="AUTH.tab('login')">Log In</button>
-        <button id="tabSignup" onclick="AUTH.tab('signup')">Sign Up</button>
-        <button id="tabReset" onclick="AUTH.tab('reset')">Reset</button>
-      </div>
-
-      <!-- LOGIN -->
-      <form id="formLogin" onsubmit="return AUTH.login(event)">
-        <h2>Welcome back</h2>
-        <p class="lead">Log in to access the lending pipeline.</p>
-        <div class="form-msg" id="loginMsg"></div>
-        <div id="loginForgot" class="forgot-pop hidden">
-          <span>Wrong password?</span>
-          <a onclick="AUTH.tab('reset')">Forgot password — reset it now →</a>
-        </div>
-        <div class="field"><label>Email address</label><input type="email" id="liEmail" placeholder="you@adityabirlacapital.com" required></div>
-        <div class="field"><label>Password</label><input type="password" id="liPass" placeholder="••••••••" required></div>
-        <label class="checkrow"><input type="checkbox" id="liRemember" checked> Remember my login ID &amp; password on this PC</label>
-        <button class="btn-primary" type="submit">Log In →</button>
-        <div class="auth-alt">New to the site? <a onclick="AUTH.tab('signup')">Sign up</a> &nbsp;·&nbsp; <a onclick="AUTH.tab('reset')">Forgot password?</a></div>
-        <div class="auth-alt" style="margin-top:8px"><a onclick="CLOUD.openSetup()">☁️ Cloud sync (use your account on any device)</a></div>
-      </form>
-
-      <!-- SIGNUP -->
-      <form id="formSignup" class="hidden" onsubmit="return AUTH.signup(event)">
-        <h2>Create your account</h2>
-        <p class="lead">New to the site? Sign up to get started.</p>
-        <div class="form-msg" id="signupMsg"></div>
-        <div class="field"><label>Full name</label><input type="text" id="suName" placeholder="e.g. Aarav Sharma" required></div>
-        <div class="field"><label>Email address</label><input type="email" id="suEmail" placeholder="you@adityabirlacapital.com" required></div>
-        <div class="row-2">
-          <div class="field"><label>Role / team</label>
-            <select id="suRole" required>
-              <option value="">Select role…</option>
-              <option value="RM">RM — Relationship Manager</option>
-              <option value="BA">BA — Business Analyst (CAM)</option>
-              <option value="RA">RA — Risk Analyst</option>
-              <option value="CC">CC — Credit Committee</option>
-              <option value="Legal">Legal — Sanction</option>
-              <option value="Ops">Operations</option>
-              <option value="Viewer">Viewer — Reports only</option>
-            </select>
-          </div>
-          <div class="field"><label>Zone (FLS belongs to)</label>
-            <select id="suZone" required>
-              <option value="">Select zone…</option>
-              <option value="North">North</option>
-              <option value="South">South</option>
-              <option value="East">East</option>
-              <option value="West">West</option>
-              <option value="Central">Central</option>
-            </select>
-          </div>
-        </div>
-        <div class="row-2">
-          <div class="field"><label>Password</label><input type="password" id="suPass" placeholder="Min 6 characters" required></div>
-          <div class="field"><label>Confirm password</label><input type="password" id="suPass2" placeholder="Re‑enter" required></div>
-        </div>
-        <button class="btn-primary" type="submit">Create account →</button>
-        <div class="auth-alt">Already registered? <a onclick="AUTH.tab('login')">Log in</a></div>
-      </form>
-
-      <!-- RESET (direct) -->
-      <form id="formReset" class="hidden" onsubmit="return AUTH.doDirectReset(event)">
-        <h2>Set a new password</h2>
-        <p class="lead">Enter your login email and a new password.</p>
-        <div class="form-msg" id="resetMsg"></div>
-        <div class="field"><label>Login email ID</label><input type="email" id="rsEmail" placeholder="you@adityabirlacapital.com" required></div>
-        <div class="field"><label>New password</label><input type="password" id="rsPass1" placeholder="Min 6 characters" required></div>
-        <div class="field"><label>Confirm new password</label><input type="password" id="rsPass2" placeholder="Re‑enter new password" required></div>
-        <button class="btn-primary" type="submit">Update password</button>
-        <div class="auth-alt">Remembered it? <a onclick="AUTH.tab('login')">Back to log in</a></div>
-      </form>
-    </div>
-    <div class="auth-clean-foot">Aditya Birla Capital — Loan Origination System · LOS = Loan Origination System · NBFC = Non‑Banking Financial Company</div>
-  </div>
 </div>
 
 <!-- ================= APP SHELL ================= -->
@@ -793,6 +721,21 @@ table.tbl tr{cursor:pointer}
       <a data-view="newcase" onclick="NAV.go('newcase')"><span class="ic">＋</span> New Case</a>
       <div class="nav-sec">Data</div>
       <a data-view="data" onclick="NAV.go('data')"><span class="ic">🗄️</span> Import &amp; Data</a>
+      <div class="nav-sec">Sample Data</div>
+      <div class="side-sample">
+        <div class="ss-t"><span>✨</span> Generate sample cases</div>
+        <div class="ss-s">Fill the system with realistic demo cases across all zones, channels and stages.</div>
+        <div class="ss-row">
+          <select id="sideSampleCount" aria-label="Number of sample cases">
+            <option value="50">50</option>
+            <option value="100">100</option>
+            <option value="300" selected>300</option>
+            <option value="500">500</option>
+          </select>
+          <button class="ss-go" onclick="SAMPLE.generate()">Generate</button>
+        </div>
+        <div class="ss-foot"><span id="sideSampleInfo">0 cases in system</span><button class="ss-clear" onclick="DATA.clearAll()">Clear all</button></div>
+      </div>
       <div class="nav-sec">Communication</div>
       <a data-view="email" onclick="NAV.go('email')"><span class="ic">📧</span> Email Center <span class="badge" id="navMailCount">0</span></a>
       <div class="nav-sec">Reference</div>
@@ -820,9 +763,10 @@ table.tbl tr{cursor:pointer}
         <div class="mh" id="menuEmail">user@email</div>
         <a onclick="NAV.go('reports')"><span>📊</span> My reports</a>
         <a onclick="NAV.go('glossary')"><span>📖</span> Glossary of terms</a>
+        <a onclick="PROFILE.edit()"><span>👤</span> Edit my name &amp; role</a>
         <a onclick="CLOUD.openSetup()"><span>☁️</span> Cloud sync</a>
         <div class="sep"></div>
-        <a class="danger" onclick="AUTH.logout()"><span>⎋</span> Log out</a>
+        <a onclick="SITE.home()"><span>🏠</span> About this platform</a>
       </div>
     </div>
   </header>
@@ -977,6 +921,8 @@ table.tbl tr{cursor:pointer}
       </div>
     </section>
 
+    <!-- ===== EMAIL CENTER ===== -->
+    <section class="view" id="view-email">
       <div class="page-head">
         <div><h2>Email Center</h2><p>Every confirmation, reset link and stakeholder hand‑off is logged here.</p></div>
         <div class="page-actions"><button class="btn ghost sm" onclick="MAIL.clearAll()">Clear log</button></div>
@@ -1483,7 +1429,7 @@ const MEM = {
 };
 
 /* ============================================================
-   PART B — UI HELPERS, AUTH, NAV, SEARCH
+   PART B — UI HELPERS, PROFILE, NAV, SEARCH
    ============================================================ */
 
 const TOAST = {
@@ -1511,126 +1457,71 @@ const UI = {
 };
 document.addEventListener('click',()=>document.querySelectorAll('.menu').forEach(m=>m.classList.remove('open')));
 
-/* ---------------- AUTH ---------------- */
-const AUTH = {
-  tab(which){
-    ['login','signup','reset'].forEach(t=>{
-      document.getElementById('tab'+t[0].toUpperCase()+t.slice(1)).classList.toggle('active',t===which);
-      document.getElementById('form'+t[0].toUpperCase()+t.slice(1)).classList.toggle('hidden',t!==which);
-    });
-    /* hide the wrong-password popup whenever tabs change */
-    const fp=document.getElementById('loginForgot'); if(fp) fp.classList.add('hidden');
-    /* carry the typed email across to the reset form for convenience */
-    if(which==='reset'){ const e=val('liEmail'); if(e) val('rsEmail',e); }
+/* ---------------- PROFILE (no login — the app opens straight into the workspace) ---------------- */
+const PROFILE = {
+  KEY:'los_profile',
+  ROLES:{RM:'Relationship Manager',BA:'Business Analyst',RA:'Risk Analyst',CC:'Credit Committee',Legal:'Legal',Ops:'Operations',Viewer:'Viewer'},
+  defaults(){ return { id:'local-user', name:'Guest User', email:'', role:'RM', zone:'' }; },
+  load(){
+    const p=DB.get(this.KEY,null);
+    return Object.assign(this.defaults(), (p&&typeof p==='object')?p:{});
   },
-  msg(id,text,kind){ const el=document.getElementById(id); el.textContent=text; el.className='form-msg '+(kind||'err'); },
-
-  signup(e){
-    e.preventDefault();
-    const name=val('suName').trim(), email=val('suEmail').trim().toLowerCase(), role=val('suRole'), zone=val('suZone');
-    const p1=val('suPass'), p2=val('suPass2');
-    if(!name) return this.msg('signupMsg','Please enter your full name.');
-    if(!role) return this.msg('signupMsg','Please select your role.');
-    if(!zone) return this.msg('signupMsg','Please select your zone.');
-    if(p1.length<6) return this.msg('signupMsg','Password must be at least 6 characters.');
-    if(p1!==p2) return this.msg('signupMsg','Passwords do not match.');
-    if(STATE.users.some(u=>u.email===email)) return this.msg('signupMsg','An account with this email already exists. Try logging in.');
-    const user={ id:uid(), name, email, role, zone, pass:hash(p1), confirmed:true, createdAt:now(), updatedAt:now() };
-    STATE.users.push(user); DB.set(K.users, STATE.users);
-    if(typeof CLOUD!=='undefined') CLOUD.onUsersChanged();
-    if(document.getElementById('liRemember')) DB.set(K.remember,{email, pass:hash(p1)});
-    TOAST.show('Account created','Welcome, '+name.split(' ')[0]+'!','ok');
-    this.startSession(user);
+  save(p){ DB.set(this.KEY,p); STATE.user=p; this.paint(); },
+  paint(){
+    const u=STATE.user; if(!u) return;
+    document.getElementById('userAvatar').textContent=initials(u.name);
+    document.getElementById('userName').textContent=u.name;
+    document.getElementById('userRole').textContent=this.ROLES[u.role]||u.role||'';
+    document.getElementById('menuEmail').textContent=u.email||'No email set';
   },
-
-  login(e){
-    e.preventDefault();
-    const email=val('liEmail').trim().toLowerCase(), pass=val('liPass');
-    const u=STATE.users.find(x=>x.email===email);
-    if(!u){ this.msg('loginMsg','No account found for this email. Please sign up first.'); return; }
-    if(u.pass!==hash(pass)){
-      this.msg('loginMsg','Incorrect password.');
-      document.getElementById('loginForgot').classList.remove('hidden'); /* show clickable forgot-password popup */
-      return;
-    }
-    document.getElementById('loginForgot').classList.add('hidden');
-    if(document.getElementById('liRemember').checked) DB.set(K.remember,{email, pass:hash(pass)});
-    else DB.del(K.remember);
-    this.startSession(u);
+  edit(){
+    const u=STATE.user||this.defaults();
+    const opt=(list,cur)=>list.map(([v,l])=>`<option value="${esc(v)}"${v===cur?' selected':''}>${esc(l)}</option>`).join('');
+    UI.openModal('Your name & role',
+      `<p style="font-size:13px;color:var(--ink-2);margin-bottom:14px">Used for “Sourced by”, case history and hand‑off emails. Saved on this device.</p>
+       <div class="field"><label>Full name</label><input id="pfName" value="${esc(u.name)}" placeholder="e.g. Aarav Sharma"></div>
+       <div class="field"><label>Email address (optional)</label><input id="pfEmail" type="email" value="${esc(u.email)}" placeholder="you@adityabirlacapital.com"></div>
+       <div class="row-2">
+         <div class="field"><label>Role / team</label><select id="pfRole">${opt(Object.entries(this.ROLES).map(([k,v])=>[k,k+' — '+v]),u.role)}</select></div>
+         <div class="field"><label>Zone</label><select id="pfZone">${opt([['','Not set'],['North','North'],['South','South'],['East','East'],['West','West'],['Central','Central']],u.zone)}</select></div>
+       </div>`,
+      `<button class="btn ghost" onclick="UI.closeModal()">Cancel</button>
+       <button class="btn primary" onclick="PROFILE.submit()">Save</button>`);
   },
+  submit(){
+    const name=val('pfName').trim();
+    if(!name){ TOAST.show('Name needed','Enter your full name to save.','err'); return; }
+    const p=Object.assign({}, STATE.user||this.defaults(), { name, email:val('pfEmail').trim().toLowerCase(), role:val('pfRole'), zone:val('pfZone') });
+    this.save(p); UI.closeModal();
+    TOAST.show('Saved','Your name & role are updated.','ok');
+    if(typeof refreshChrome==='function') refreshChrome();
+  }
+};
 
-  /* Direct reset: email + new password + confirm → updates password, forgets old one */
-  doDirectReset(e){
-    e.preventDefault();
-    const email=val('rsEmail').trim().toLowerCase(), p1=val('rsPass1'), p2=val('rsPass2');
-    const u=STATE.users.find(x=>x.email===email);
-    if(!u) return this.msg('resetMsg','No account found for this email. Please sign up first.');
-    if(p1.length<6) return this.msg('resetMsg','New password must be at least 6 characters.');
-    if(p1!==p2) return this.msg('resetMsg','Passwords do not match.');
-    u.pass=hash(p1); u.confirmed=true; u.updatedAt=now(); delete u.resetToken; DB.set(K.users,STATE.users);
-    if(typeof CLOUD!=='undefined') CLOUD.onUsersChanged();
-    /* if this email was remembered on this PC, update the stored password too */
-    const rem=DB.get(K.remember,null); if(rem&&rem.email===email) DB.set(K.remember,{email,pass:hash(p1)});
-    val('rsPass1',''); val('rsPass2','');
-    AUTH.tab('login'); val('liEmail',email); val('liPass','');
-    TOAST.show('Password updated','Your new password is saved. Please log in.','ok');
-    this.msg('loginMsg','✅ Password updated — log in with your new password.','ok');
+/* ---------------- SIDEBAR — sample data generator ---------------- */
+const SAMPLE = {
+  generate(){
+    const n=Number(val('sideSampleCount'))||300;
+    DATA.generateFake(n);
+    document.getElementById('sidebar').classList.remove('open');
   },
-
-  /* legacy email-action shims (older stored emails may reference these) */
-  confirm(){ TOAST.show('Already active','Accounts are active immediately now — just log in.','info'); },
-  resetForm(){ SITE.enter('reset'); },
-
-  startSession(u){
-    STATE.user=u; DB.set(K.session,{email:u.email});
-    document.getElementById('siteScreen').classList.remove('show');
-    document.getElementById('authScreen').style.display='none';
-    document.getElementById('app').style.display='grid';
-    APP.boot();
-    const hr=new Date().getHours();
-    const greet=hr<12?'Good morning':hr<17?'Good afternoon':'Good evening';
-    TOAST.show('👋 '+greet+', '+(u.name.split(' ')[0]||'there')+'!', 'Welcome back to Aditya Birla Capital LOS.','ok');
-  },
-
-  logout(){
-    DB.del(K.session);
-    STATE.user=null; STATE.openCaseId=null;
-    document.getElementById('app').style.display='none';
-    document.getElementById('authScreen').style.display='none';
-    SITE.home();
-    AUTH.tab('login');
-    const rem=DB.get(K.remember,null);
-    if(rem){ val('liEmail',rem.email); }
-    val('liPass','');
-    TOAST.show('Logged out','See you again.','info');
+  refresh(){
+    const el=document.getElementById('sideSampleInfo'); if(!el) return;
+    const n=STATE.cases.length;
+    el.textContent=n+(n===1?' case':' cases')+' in system';
   }
 };
 function val(id,set){ const el=document.getElementById(id); if(set!==undefined){el.value=set;return;} return el?el.value:''; }
 
-/* Build mode: 'app' = open straight to login · 'website' = public landing page first */
-const SITE_MODE = 'website';
-
-/* ---------------- PUBLIC WEBSITE (landing) ---------------- */
+/* ---------------- PUBLIC WEBSITE (landing) — optional "About" page ---------------- */
 const SITE = {
   home(){
-    document.getElementById('app').style.display='none';
-    if(SITE_MODE==='website'){
-      document.getElementById('authScreen').style.display='none';
-      const s=document.getElementById('siteScreen'); s.classList.add('show'); s.scrollTop=0;
-    } else {
-      /* app mode: "home" is the clean login page */
-      document.getElementById('siteScreen').classList.remove('show');
-      document.getElementById('authScreen').style.display='grid';
-      AUTH.tab('login');
-    }
-    window.scrollTo(0,0);
+    const s=document.getElementById('siteScreen'); s.classList.add('show'); s.scrollTop=0;
   },
-  enter(tab){
+  enter(view){
     document.getElementById('siteScreen').classList.remove('show');
-    document.getElementById('authScreen').style.display='grid';
-    AUTH.tab(tab||'login');
-    const rem=DB.get(K.remember,null);
-    if(rem&&(tab==='login'||!tab)) val('liEmail',rem.email);
+    document.getElementById('app').style.display='grid';
+    NAV.go(view||'dashboard');
     window.scrollTo(0,0);
   },
   scrollTo(id){
@@ -2973,9 +2864,7 @@ const MAIL = {
     grid.innerHTML = mails.map(m=>{
       let actBtns='';
       if(m.action){
-        if(m.action.kind==='confirm') actBtns=`<button class="btn success sm" onclick="AUTH.confirm('${m.action.token}')"><span class="ic">✓</span> Confirm account</button>`;
-        else if(m.action.kind==='reset') actBtns=`<button class="btn primary sm" onclick="AUTH.resetForm('${m.action.token}')"><span class="ic">🔑</span> Reset password</button>`;
-        else if(m.action.kind==='mailto'){ const href=`mailto:${encodeURIComponent(m.action.email)}?subject=${encodeURIComponent(m.action.subject)}&body=${encodeURIComponent(m.action.body)}`; actBtns=`<a class="btn ghost sm" href="${href}"><span class="ic">📧</span> Open in mail app</a>`; }
+        if(m.action.kind==='mailto'){ const href=`mailto:${encodeURIComponent(m.action.email)}?subject=${encodeURIComponent(m.action.subject)}&body=${encodeURIComponent(m.action.body)}`; actBtns=`<a class="btn ghost sm" href="${href}"><span class="ic">📧</span> Open in mail app</a>`; }
       }
       const tcls=m.type==='handoff'?'handoff':m.type==='system'?'system':'';
       return `<div class="mail-item">
@@ -3018,6 +2907,7 @@ const HELP = {
 function refreshChrome(){
   if(!STATE.user) return;
   document.getElementById('navReportsCount').textContent = STATE.cases.length;
+  SAMPLE.refresh();
   document.getElementById('navMailCount').textContent = STATE.emails.length;
   document.getElementById('bellDot').classList.toggle('hidden', STATE.emails.length===0);
   /* keep current view fresh */
@@ -3918,11 +3808,7 @@ const APP = {
     STATE.cases=DB.get(K.cases,[]); STATE.emails=DB.get(K.emails,[]);
     APP.migrateCases();
     /* header */
-    const u=STATE.user;
-    document.getElementById('userAvatar').textContent=initials(u.name);
-    document.getElementById('userName').textContent=u.name;
-    document.getElementById('userRole').textContent=(({RM:'Relationship Manager',BA:'Business Analyst',RA:'Risk Analyst',CC:'Credit Committee',Legal:'Legal',Ops:'Operations',Viewer:'Viewer'})[u.role]||u.role)+(u.zone?' · '+u.zone:'');
-    document.getElementById('menuEmail').textContent=u.email;
+    PROFILE.paint();
     refreshChrome();
     NAV.go('dashboard');
     if(!DB.persistent() && !APP._warnedStorage){
@@ -3982,42 +3868,14 @@ function applyLogos(){ ['brandLogo1','brandLogo2','siteLogo','siteLogoFoot'].for
   STATE.cases=DB.get(K.cases,[]);
   STATE.emails=DB.get(K.emails,[]);
 
-  /* remember-me prefill */
-  const rem=DB.get(K.remember,null);
-  if(rem&&rem.email){ const li=document.getElementById('liEmail'); if(li)li.value=rem.email; }
-
-  /* auto-resume session straight into the app (past activity stays visible) */
-  const sess=DB.get(K.session,null);
-  if(sess&&sess.email){
-    const u=STATE.users.find(x=>x.email===sess.email);
-    if(u){ STATE.user=u; document.getElementById('siteScreen').classList.remove('show'); document.getElementById('authScreen').style.display='none'; document.getElementById('app').style.display='grid'; APP.boot(); return; }
-  }
-  /* no session → app build opens to login; website build opens to the public landing page */
-  document.getElementById('app').style.display='none';
-  if(SITE_MODE==='website'){
-    document.getElementById('authScreen').style.display='none';
-    document.getElementById('siteScreen').classList.add('show');
-  } else {
-    document.getElementById('siteScreen').classList.remove('show');
-    document.getElementById('authScreen').style.display='grid';
-  }
-  AUTH.tab('login');
-
-  /* ---- optional cloud bootstrap (cross-device sync) ----
-     Runs after the local-first render. When a session is already active,
-     APP.boot() performs the cloud pull, so here we only handle the
-     logged-out case: connect + pull users so a new device recognises
-     existing accounts before login. */
-  if(typeof CLOUD!=='undefined' && CLOUD.configured() && !STATE.user){
-    CLOUD.init().then(ok=>{
-      if(!ok){ return; }
-      return CLOUD.pull().then(()=>{
-        /* re-hydrate remember-me email if present */
-        const rem2=DB.get(K.remember,null);
-        if(rem2&&rem2.email){ const li=document.getElementById('liEmail'); if(li&&!li.value)li.value=rem2.email; }
-      });
-    }).catch(e=>{ console.warn('cloud bootstrap failed', e); });
-  }
+  /* no login — open straight into the workspace */
+  STATE.user=PROFILE.load();
+  document.getElementById('siteScreen').classList.remove('show');
+  document.getElementById('app').style.display='grid';
+  APP.boot();
+  const hr=new Date().getHours();
+  const greet=hr<12?'Good morning':hr<17?'Good afternoon':'Good evening';
+  TOAST.show('👋 '+greet+'!','Welcome to Aditya Birla Capital LOS.','ok');
 })();
 </script>
 </body>
